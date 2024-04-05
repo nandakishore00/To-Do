@@ -9,6 +9,7 @@
   "author": "Nandu",
   "license": "ISC",
   "devDependencies": {
+    "tailwindcss": "^3.4.3",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4"
   }
