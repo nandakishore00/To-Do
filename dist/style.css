@@ -54,11 +54,11 @@
   display:none;
 
 }
-#newTaskInput{
+.newTaskInput{
   margin:4px;
   padding: 5px;
   border-radius:5px;
-  width:70%;
+  width:70%;  
   border:1px solid green;
 }
 .newTaskItem{

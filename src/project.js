@@ -1,7 +1,7 @@
 function project(){
 const forms = document.querySelector("form");
 const newTaskButton = document.querySelector(".newTaskButton");
-const newTaskInput = document.getElementById('newTaskInput');
+const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
 function handleEnter() {
     const taskTitle = newTaskInput.value;
@@ -33,5 +33,37 @@ newTaskInput.addEventListener('keydown', (e) => {
     if (e.key==='Enter'){
         e.preventDefault()
         handleEnter();}
+});
+var flag=true
+taskList.addEventListener('click', (event) => {
+    const e=event.target.parentNode
+    if (event.target.className==='fas fa-trash'){
+        e.previousElementSibling.parentNode.remove()
+    }
+    
+    else if (event.target.className==='far fa-edit') {
+        if(flag){
+        flag=false
+        const contentElement=e.parentNode.childNodes[0]
+        const editInput = document.createElement('input');
+        editInput.type = 'text';
+        editInput.classList.add('newTaskInput')
+        console.log(contentElement)
+        editInput.value = contentElement.textContent;
+        contentElement.replaceWith(editInput);
+        editInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            console.log('asd',editInput.value)
+            event.preventDefault();
+            // contentElement.textContent = editInput.value;
+            contentElement.textContent=editInput.value
+            editInput.replaceWith(contentElement)
+            flag=true
+          
+    }
+
+  })}
+  ;}
 });}
+
 export {project}
