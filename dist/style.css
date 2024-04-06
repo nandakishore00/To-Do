@@ -38,7 +38,7 @@
   flex-direction: row;
   justify-content:space-between;
   padding:5px;
-  border-radius: 10%;
+  border-radius: 9px;
   border: 1.5px solid black;
 }
 .newTaskButton:hover{
@@ -52,6 +52,41 @@
 } 
 .hidden{
   display:none;
+
 }
-  
-  
+#newTaskInput{
+  margin:4px;
+  padding: 5px;
+  border-radius:5px;
+  width:70%;
+  border:1px solid green;
+}
+.newTaskItem{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid green;
+    margin: 5px;
+    padding: 10px 0px;
+    border-radius: 12px;
+    color:black;
+
+}
+.content{
+  padding: 5px;
+}
+.itemIcons{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 3px;
+}
+.fa-trash,.fa-edit{
+  border: 1px solid green ;
+  padding:7px;
+  margin:0px 4px;
+  border-radius:5px;
+}
+.fa-trash:hover,.fa-edit:hover{
+  background-color: green;
+  color:white
+}
