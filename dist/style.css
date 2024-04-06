@@ -25,10 +25,7 @@
   .side-bar{
     background-color:#e2e2e2;
   }
-.list-container{
-  display:flex;
-  flex-direction: column;
-}
+
 .list-heading{
     display:flex;
     flex-direction: row;
@@ -36,7 +33,7 @@
     margin:20px 3px 5px;
     padding:5px;
   }
-.new{
+.newTaskButton{
   display:flex;
   flex-direction: row;
   justify-content:space-between;
@@ -44,11 +41,17 @@
   border-radius: 10%;
   border: 1.5px solid black;
 }
-.new:hover{
+.newTaskButton:hover{
   background-color: #6fb86f;
   color: white;
   border: 1.5px solid #6fb86f
 }
-
+ .taskList{
+  display:flex;
+  flex-direction: column;
+} 
+.hidden{
+  display:none;
+}
   
   
