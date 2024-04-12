@@ -17,13 +17,14 @@
     padding:15px;
     color: #faf2f2
   }
+  /* Side-bar CSS */
   .project{
     display: grid;
     grid-template-columns: 1fr 3fr;
     height: 88vh;
   }
   .side-bar{
-    background-color:#e2e2e2;
+    background-color:rgb(244, 241, 241)
   }
 
 .list-heading{
@@ -39,7 +40,7 @@
   justify-content:space-between;
   padding:5px;
   border-radius: 9px;
-  border: 1.5px solid black;
+  border: 1.5px solid #6fb86f;
 }
 .newTaskButton:hover{
   background-color: #6fb86f;
@@ -65,12 +66,17 @@
   display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 2px solid green;
+    border: 1px solid green;
     margin: 5px;
     padding: 10px 0px;
     border-radius: 12px;
     color:black;
 
+}
+.newTaskItem:hover{
+  background-color: #5c9a5c;
+  color:#ffff;
+  font-size: medium;
 }
 .content{
   padding: 5px;
@@ -87,6 +93,61 @@
   border-radius:5px;
 }
 .fa-trash:hover,.fa-edit:hover{
-  background-color: green;
-  color:white
+  background-color:white;
+  color:green;
 }
+
+/* tasks related */
+
+ .taskButton{
+  margin:15px;
+  position: absolute;
+  right:0px;
+}
+
+.todo-box {
+    width: 300px;
+    /* height: 350px; */
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 90px;
+}
+.to-do-buttons{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 3px;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+} 

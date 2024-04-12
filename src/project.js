@@ -4,10 +4,11 @@ const newTaskButton = document.querySelector(".newTaskButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
 function handleEnter() {
-    const taskTitle = newTaskInput.value;
+    const title = newTaskInput.value;
+    const taskTitle=title.toUpperCase()
     if (taskTitle !== ''){
       const content=document.createElement('span')
-      const newTaskItem = document.createElement('li');
+      const newTaskItem = document.createElement('button');
       const delIcon=document.createElement('button');
       const editIcon=document.createElement('button');
       const itemIcons=document.createElement('div');
@@ -26,6 +27,12 @@ function handleEnter() {
       forms.classList.add('hidden');
     }
   }
+  const newButton=document.querySelector('.taskList')
+  newButton.addEventListener('click',(e)=>{
+    console.log(e.innerText)})
+// const newTaskItem=  newTaskItem.addEventListener('click',()=>{
+//   console.log('hi')
+// })
 newTaskButton.addEventListener('click', () => {
   forms.classList.toggle('hidden');
 });
@@ -42,28 +49,24 @@ taskList.addEventListener('click', (event) => {
     }
     
     else if (event.target.className==='far fa-edit') {
-        if(flag){
+       if(flag){ //Flag Prevents deleting the value if the edit button is pressed multiple times
         flag=false
         const contentElement=e.parentNode.childNodes[0]
         const editInput = document.createElement('input');
         editInput.type = 'text';
         editInput.classList.add('newTaskInput')
-        console.log(contentElement)
         editInput.value = contentElement.textContent;
         contentElement.replaceWith(editInput);
         editInput.addEventListener('keydown', (e) => {
           if (e.key === 'Enter') {
-            console.log('asd',editInput.value)
             event.preventDefault();
-            // contentElement.textContent = editInput.value;
             contentElement.textContent=editInput.value
             editInput.replaceWith(contentElement)
             flag=true
           
-    }
-
-  })}
+              }
+  })
   ;}
-});}
+}});}
 
 export {project}
