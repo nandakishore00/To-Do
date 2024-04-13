@@ -18,7 +18,6 @@ newTaskInput.addEventListener('keydown', (e) => {
 });
 var flag=true
 taskList.addEventListener('click', (event) => {
-  console.log(event)
     const e=event.target.parentNode
     if (event.target.className==='fas fa-trash'){
         e.previousElementSibling.parentNode.remove()
