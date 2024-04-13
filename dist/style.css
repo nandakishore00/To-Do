@@ -99,13 +99,13 @@
 
 /* tasks related */
 
- .taskButton{
+ .addTask{
   margin:15px;
   position: absolute;
   right:0px;
 }
 
-.todo-box {
+.toDoBox {
     width: 300px;
     /* height: 350px; */
     background-color: #f5f5f5;
