@@ -1,11 +1,13 @@
 function task(){
-    const addTask=document.querySelector('.newTaskButton')
-console.log(addTask)
+const addTask=document.querySelector('.addTask')
+
 const toDoBox=document.querySelector('.toDoBox')
+const toDoBoxCont=document.querySelector('.todo-Box-Container');
+console.log(toDoBox,addTask)
 addTask.addEventListener('click',()=>{
+    toDoBoxCont.style.backdropFilter='blur(2px)'; /*Blur effect on the background */
     toDoBox.classList.toggle('hidden');
 })
 }
 
-// export {addTask}
-export default task()
+export {task}

@@ -97,7 +97,7 @@
   color:green;
 }
 
-/* tasks related */
+/* toDo box CSS */
 
  .addTask{
   margin:15px;
@@ -105,21 +105,38 @@
   right:0px;
 }
 
-.toDoBox {
-    width: 300px;
-    /* height: 350px; */
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    box-sizing: border-box;
-    margin: auto;
-    margin-top: 90px;
+.todo-Box-Container {
+  
+  /* background-color: rgba(0, 0, 0, 0.5); Semi-transparent background */
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* Ensure the container is on top */
+  
+
 }
-.to-do-buttons{
+
+.toDoBox {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adjust the box-shadow as needed */
+    width:auto;
+    background-color:rgb(60, 165, 60);
+    border: 1px solid #171313;
+    border-radius: 5px;
+    
+}
+.to-do-buttons,.addCancelButtons{
   display: flex;
   justify-content: space-between;
   padding: 0px 3px;
+}
+.itemHeading{
+text-align: center;
+background-color:red;
+border: 4px solid red;
+padding:5px;
 }
 .form-group {
   margin-bottom: 15px;
@@ -143,9 +160,9 @@ select {
 
 button[type="submit"] {
   display: block;
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
+  margin:10px;
+  color: #ffffff;
+  background-color: rgb(0, 0, 0);
   padding: 10px 20px;
   border: none;
   border-radius: 3px;

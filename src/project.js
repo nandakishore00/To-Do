@@ -5,8 +5,7 @@ const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
 
 
-// const mainButton=document.querySelector('.main-content')
-// mainButton.addEventListener('click',()=>{console.log('div')})
+
 
 // event listeners to handle new button,edit and delete functioanlities in side bar
 newTaskButton.addEventListener('click',()=>{
