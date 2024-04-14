@@ -1,5 +1,5 @@
 function task() {
-    return new Promise((resolve) => {
+    
       const addTask=document.querySelector('.addTask')
       const title = document.getElementById('title');
       const desc=document.querySelector("#description")
@@ -23,15 +23,15 @@ function task() {
         });
       submitButton.addEventListener('click', (e) => {
         toDoBox.classList.toggle('hidden');
+        toDoBoxCont.style.backdropFilter='blur(0px)'
         e.preventDefault();
-        resolve({
-          title: title.value,
-          description: desc.value,
-          dueDate: dueDate.value,
-          priority: priority.value
-        });
+        // resolve({
+        //   title: title.value,
+        //   description: desc.value,
+        //   dueDate: dueDate.value,
+        //   priority: priority.value
       });
-    });
+    ;
   }
   export { task };
   
