@@ -1,7 +1,8 @@
-const toDoArray=[]
-const createToDo=(Title, Description, DueDate,Priority,Checklist)=>{
-toDoArray.push(Title, Description, DueDate,Priority,Checklist);
-return Title, Description, DueDate,Priority,Checklist;
-}
+import { task } from './task.js';
 
-export default createToDo
+task().then((formData) => {
+  console.log(formData.title);
+  console.log(formData.description);
+  console.log(formData.dueDate);
+  console.log(formData.priority);
+});

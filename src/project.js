@@ -3,10 +3,6 @@ const forms = document.querySelector("form");
 const newTaskButton = document.querySelector(".newTaskButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
-
-
-
-
 // event listeners to handle new button,edit and delete functioanlities in side bar
 newTaskButton.addEventListener('click',()=>{
   forms.classList.toggle('hidden');
