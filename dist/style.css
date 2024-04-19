@@ -100,6 +100,7 @@
 /* toDo box CSS */
 
  .addTask{
+  
   margin:15px;
   position: absolute;
   right:0px;
@@ -145,7 +146,7 @@ padding:10px;
   flex-direction: row;
 }
 
-input[type="text"],
+input[type="text"],input[type="date"],
 textarea,
 select {
   width:100%;

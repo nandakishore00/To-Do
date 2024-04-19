@@ -1,8 +1,10 @@
 function project(){
 const forms = document.querySelector("form");
+const newTaskItem = document.createElement('button');
 const newTaskButton = document.querySelector(".newTaskButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
+const addTask=document.querySelector('.addTask')
 // event listeners to handle new button,edit and delete functioanlities in side bar
 newTaskButton.addEventListener('click',()=>{
   forms.classList.toggle('hidden');
@@ -43,13 +45,12 @@ taskList.addEventListener('click', (event) => {
 }});
 
 // function to handle enter key 
-
+newTaskItem.addEventListener('click',()=>{addTask.classList.toggle('hidden')})
 function handleEnter() {
   const title = newTaskInput.value;
   const taskTitle=title.toUpperCase()
   if (taskTitle !== ''){
     const content=document.createElement('span')
-    const newTaskItem = document.createElement('button');
     const delIcon=document.createElement('button');
     const editIcon=document.createElement('button');
     const itemIcons=document.createElement('div');
