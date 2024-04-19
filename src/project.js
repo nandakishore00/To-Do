@@ -1,6 +1,5 @@
 function project(){
 const forms = document.querySelector("form");
-const newTaskItem = document.createElement('button');
 const newTaskButton = document.querySelector(".newTaskButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
@@ -15,6 +14,7 @@ newTaskInput.addEventListener('keydown', (e) => {
         handleEnter();}
 });
 var flag=true
+
 taskList.addEventListener('click', (event) => {
     const e=event.target.parentNode
     if (event.target.className==='fas fa-trash'){
@@ -45,8 +45,8 @@ taskList.addEventListener('click', (event) => {
 }});
 
 // function to handle enter key 
-newTaskItem.addEventListener('click',()=>{addTask.classList.toggle('hidden')})
 function handleEnter() {
+  const newTaskItem = document.createElement('button');    
   const title = newTaskInput.value;
   const taskTitle=title.toUpperCase()
   if (taskTitle !== ''){
@@ -67,7 +67,14 @@ function handleEnter() {
     taskList.appendChild(newTaskItem);
     newTaskInput.value = '';
     forms.classList.add('hidden');
+    handleTaskItem(newTaskItem);
   }
+}
+//to handle main-content
+function handleTaskItem(taskItem) {
+  taskItem.addEventListener('click',()=>
+  {{addTask.classList.remove('hidden')}
+  });
 }
 }
 
