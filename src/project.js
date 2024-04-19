@@ -1,11 +1,11 @@
 function project(){
 const forms = document.querySelector("form");
-const newTaskButton = document.querySelector(".newTaskButton");
+const newButton = document.querySelector(".newButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
 const addTask=document.querySelector('.addTask')
 // event listeners to handle new button,edit and delete functioanlities in side bar
-newTaskButton.addEventListener('click',()=>{
+newButton.addEventListener('click',()=>{
   forms.classList.toggle('hidden');
 })
 newTaskInput.addEventListener('keydown', (e) => {  

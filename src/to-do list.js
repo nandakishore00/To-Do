@@ -1,8 +1,10 @@
-import { task } from './task.js';
-
-// task().then((formData) => {
-//   console.log(formData.title);
-//   console.log(formData.description);
-//   console.log(formData.dueDate);
-//   console.log(formData.priority);
-// });
+import { taskExportValues  as exportValues} from './task.js';
+function toDo(){
+    if (exportValues){
+        console.log(exportValues.title);
+    console.log(exportValues.description);
+    console.log(exportValues.dueDate);
+    console.log(exportValues.priority);
+    }
+}
+export {toDo}

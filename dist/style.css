@@ -34,7 +34,7 @@
     margin:20px 3px 5px;
     padding:5px;
   }
-.newTaskButton{
+.newButton,.newTaskButton{
   display:flex;
   flex-direction: row;
   justify-content:space-between;
@@ -42,7 +42,7 @@
   border-radius: 9px;
   border: 1.5px solid #6fb86f;
 }
-.newTaskButton:hover{
+.newButton:hover,.newTaskButton:hover{
   background-color: #6fb86f;
   color: white;
   border: 1.5px solid #6fb86f
