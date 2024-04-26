@@ -146,7 +146,7 @@ padding:10px;
   flex-direction: row;
 }
 
-input[type="text"],input[type="date"],
+#title,input[type="date"],
 textarea,
 select {
   width:100%;

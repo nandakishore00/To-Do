@@ -13,8 +13,7 @@ newTaskInput.addEventListener('keydown', (e) => {
         e.preventDefault()
         handleEnter();}
 });
-var flag=true
-
+var flag=true 
 taskList.addEventListener('click', (event) => {
     const e=event.target.parentNode
     if (event.target.className==='fas fa-trash'){
@@ -22,7 +21,7 @@ taskList.addEventListener('click', (event) => {
     }
     
     else if (event.target.className==='far fa-edit') {
-       //Flag Prevents editing the value if the edit button is pressed multiple times
+       //Flag Prevents the value getting erased if the edit button is pressed more than once
        if(flag){ 
         flag=false
         const contentElement=e.parentNode.childNodes[0]

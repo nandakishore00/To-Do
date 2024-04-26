@@ -14,7 +14,6 @@ import {toDo} from './to-do list.js'
     const un = mainContent.childNodes[3]; //adds blur effect and to-do box's class
     const form = document.querySelector('#todo-form'); // Get the form element
     const requiredFields = form.querySelectorAll('[required]'); // Get all required fields
-    
     //Function to toggle the submit button state
     function toggleSubmitButton() {
       let isValid = true;
