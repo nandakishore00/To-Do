@@ -1,9 +1,10 @@
+//function for creating the functionalities for sidebar
 function project(){
 const forms = document.querySelector("form");
 const newButton = document.querySelector(".newButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
-const addTask=document.querySelector('.addTask')
+const addTask=document.querySelector('.addTask');
 // event listeners to handle new button,edit and delete functioanlities in side bar
 newButton.addEventListener('click',()=>{
   forms.classList.toggle('hidden');
