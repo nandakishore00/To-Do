@@ -3,16 +3,11 @@ import { toDo } from './to-do list.js';
 
 export function task() {
   const mainContent = document.querySelector('.main-content');
-  const project=document.querySelector('.project')
 console.log(mainContent.childNodes)
   // Get the main container element
-  const mainContainer = document.querySelector('.main-content');
-
   // Create the todo-Box-Container div
   const todoBoxContainer = document.createElement('div');
   todoBoxContainer.classList.add('todo-Box-Container');
-  
-
   // Create the toDoBox div
   const toDoBox = document.createElement('div');
   toDoBox.classList.add('toDoBox', 'hidden');
@@ -134,7 +129,7 @@ console.log(mainContent.childNodes)
   addTask.addEventListener('click', (e) => {
     // Append the todoBoxContainer to the main container
     addTask.disabled=true
-    project.appendChild(todoBoxContainer);
+    mainContent.appendChild(todoBoxContainer);
     toDoBox.classList.toggle('hidden');
     e.preventDefault();
   });
@@ -149,7 +144,7 @@ console.log(mainContent.childNodes)
     description.value = '';
     toDoBox.classList.toggle('hidden');
     const TDBC=document.querySelector('.todo-Box-Container')
-    project.removeChild(TDBC);
+    mainContent.removeChild(TDBC);
     e.preventDefault();
   });
 
@@ -161,7 +156,7 @@ console.log(mainContent.childNodes)
     addTask.disabled=false
     const TDBC=document.querySelector('.todo-Box-Container')
     toDoBox.classList.toggle('hidden');
-    project.removeChild(TDBC);
+    mainContent.removeChild(TDBC);
     e.preventDefault();
     const exportValues = {
       title: title.value,

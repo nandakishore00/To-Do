@@ -1,42 +1,47 @@
-
-//js file to list all the to-do tasks in main content 
 export function toDo(taskData) {
-  // Call the imported task function
-  const {title,description,dueDate,priority}=taskData
-  console.log('Task data (if available):', title,description);
-  console.log('hielo')
-  // to-do list.js
-  // Create a new list item
-  const mainContent=document.querySelector('.main-content')
-  const todoList=document.createElement('div');
-  todoList.classList.add('todo-list')
-  const listItem = document.createElement('li');
-  listItem.classList.add('todo-item');
-  // Create the title element
-  const titleElement = document.createElement('h3');
-  titleElement.textContent = title;
-  listItem.appendChild(titleElement);
+  const { title, description, dueDate, priority } = taskData;
+  console.log('Task data (if available):', title, description);
 
-  // Create the date element
-  const dateElement = document.createElement('p');
-  dateElement.textContent = `Due Date: ${dueDate}`;
-  listItem.appendChild(dateElement);
+  const mainContent = document.querySelector('.main-content');
+  const todoList = document.createElement('div');
+  todoList.classList.add('todo-list');
+
+  const todoItem = document.createElement('div');
+  todoItem.classList.add('todo-item');
+  const todoDiv= document.createElement('div');
+  todoDiv.classList.add('todoDiv')
+  // Create the title element
+  const titleElement = document.createElement('div');
+  titleElement.classList.add('title');
+  titleElement.textContent = title;
+  todoItem.appendChild(titleElement);
+
+  // Create the due date element
+  const dateElement = document.createElement('div');
+  dateElement.classList.add('due-date');
+  dateElement.textContent =  `${dueDate}`;
+  todoDiv.appendChild(dateElement);
 
   // Create the priority element
-  const priorityElement = document.createElement('p');
+  const priorityElement = document.createElement('div');
+  priorityElement.classList.add('priority');
   priorityElement.textContent = `Priority: ${priority}`;
-  listItem.appendChild(priorityElement);
+  if (priority=='low'){todoItem.style.border= '2px solid red'};
+  if(priority=='medium'){todoItem.style.border='2px solid orange'};
+  if(priority=='high'){todoItem.style.border='2px solid green'}
+  todoDiv.appendChild(priorityElement);
 
   // Create the description container
   const descriptionContainer = document.createElement('div');
   descriptionContainer.classList.add('description-container', 'hidden');
 
   // Create the description element
-  const descriptionElement = document.createElement('p');
+  const descriptionElement = document.createElement('div');
+  descriptionElement.classList.add('description');
   descriptionElement.textContent = description;
   descriptionContainer.appendChild(descriptionElement);
-  listItem.appendChild(descriptionContainer);
-
+  todoDiv.appendChild(descriptionContainer);
+  todoItem.appendChild(todoDiv)
   // Create the buttons container
   const buttonsContainer = document.createElement('div');
   buttonsContainer.classList.add('buttons-container');
@@ -50,23 +55,13 @@ export function toDo(taskData) {
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete';
   buttonsContainer.appendChild(deleteButton);
-
-  listItem.appendChild(buttonsContainer);
+  todoDiv.appendChild(buttonsContainer);
 
   // Add an event listener to toggle the description container
-  listItem.addEventListener('click', () => {
+  todoItem.addEventListener('click', () => {
     descriptionContainer.classList.toggle('hidden');
   });
 
-  // Add the list item to the to-do list
-  console.log(listItem,todoList)
-  listItem.classList.add('styles')
-  todoList.appendChild(listItem)
-
-  mainContent.appendChild(todoList)
-  // todoList.appendChild('styles')
-
-  // todoList.appendChild(listItem);
+  todoList.appendChild(todoItem);
+  mainContent.appendChild(todoList);
 }
-
-
