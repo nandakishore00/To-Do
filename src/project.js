@@ -1,10 +1,11 @@
 //function for creating the functionalities for sidebar
 function project(){
 const forms = document.querySelector("form");
+const mainContent=document.querySelector('mainContent')
 const newButton = document.querySelector(".newButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
-const addTask=document.querySelector('.addTask');
+const addTaskButton=document.querySelector('.addTaskButton');
 // event listeners to handle new button,edit and delete functioanlities in side bar
 newButton.addEventListener('click',()=>{
   forms.classList.toggle('hidden');
@@ -73,9 +74,23 @@ function handleEnter() {
 //to handle main-content
 function handleTaskItem(taskItem) {
   taskItem.addEventListener('click',()=>
-  {{addTask.classList.remove('hidden')}
+  {const newTaskButton = document.createElement('button');
+  newTaskButton.type = 'button';
+  newTaskButton.classList.add('newTaskButton', 'addTask');
+  newTaskButton
+  // Create the h3 element
+  const h3Element = document.createElement('h3');
+  h3Element.style.fontSize = 'medium';
+  h3Element.style.paddingRight = '13px';
+  h3Element.textContent = 'ADD TASK';
+  console.log('im clicked')
+  // Create the + symbol
+  const iElement = document.createElement('i');
+  iElement.classList.add('fas', 'fa-plus');
+  iElement.style.padding = '2px';
+  iElement.style.fontSize = 'small';
+  mainContent.appendChild(newTaskButton)
   });
 }
 }
-
 export {project}
