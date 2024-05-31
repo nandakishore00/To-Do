@@ -104,27 +104,42 @@
   color:green;
 }
 
+
+/* add item css */
+.mainheading
+{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
 /* toDo box CSS */
 
  .addTask{
   
-  margin:15px;
-  position: absolute;
   right:0px;
 }
 .todoDiv{
   display:flex;
+  justify-content: space-between;
 }
 .todo-item{
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px; /* Adjust the gap between child elements */
-  background-color:#faf2f2;
+  /* background-color:#faf2f2;
   
   border-radius: 10px;
   margin:10px;
-  padding:10px;
+  padding:10px;  */
+
+  display: grid;
+  grid-template-columns: 1fr 7fr 1.5fr 0.5fr 0.5fr;
+  place-items: center;
+  height: 50px;
+  border: 1px solid var(--main-grey-color);
+  border-radius: 10px;
+  position: relative;
 }
 
 .toDoBox {
@@ -190,3 +205,6 @@ button[type="submit"]:hover{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/*list of to-do style*/
+

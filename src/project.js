@@ -1,11 +1,16 @@
-//function for creating the functionalities for sidebar
+//js file for creating the functionalities for sidebar
+import {task} from './task.js'
 function project(){
 const forms = document.querySelector("form");
-const mainContent=document.querySelector('mainContent')
+const mainContent=document.querySelector('.main-content')
 const newButton = document.querySelector(".newButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
-const addTaskButton=document.querySelector('.addTaskButton');
+var newTaskItem=document.createElement('button');  
+
+
+
+
 // event listeners to handle new button,edit and delete functioanlities in side bar
 newButton.addEventListener('click',()=>{
   forms.classList.toggle('hidden');
@@ -45,16 +50,20 @@ taskList.addEventListener('click', (event) => {
 
 }});
 
+console.log(newTaskItem)
+
+
 // function to handle enter key 
-function handleEnter() {
-  const newTaskItem = document.createElement('button');    
-  const title = newTaskInput.value;
-  const taskTitle=title.toUpperCase()
+function handleEnter() {  
+const content=document.createElement('span');
+const delIcon=document.createElement('button');
+const editIcon=document.createElement('button');
+const itemIcons=document.createElement('div');
+  newTaskItem = document.createElement('button');  
+  const taskTitle = newTaskInput.value;
+  taskTitle=taskTitle.toUpperCase()
   if (taskTitle !== ''){
-    const content=document.createElement('span')
-    const delIcon=document.createElement('button');
-    const editIcon=document.createElement('button');
-    const itemIcons=document.createElement('div');
+
     content.classList.add('content')
     delIcon.classList.add('fas','fa-trash');
     editIcon.classList.add('far','fa-edit');
@@ -68,29 +77,42 @@ function handleEnter() {
     taskList.appendChild(newTaskItem);
     newTaskInput.value = '';
     forms.classList.add('hidden');
-    handleTaskItem(newTaskItem);
+  
   }
 }
 //to handle main-content
-function handleTaskItem(taskItem) {
-  taskItem.addEventListener('click',()=>
-  {const newTaskButton = document.createElement('button');
-  newTaskButton.type = 'button';
-  newTaskButton.classList.add('newTaskButton', 'addTask');
-  newTaskButton
-  // Create the h3 element
-  const h3Element = document.createElement('h3');
-  h3Element.style.fontSize = 'medium';
-  h3Element.style.paddingRight = '13px';
-  h3Element.textContent = 'ADD TASK';
-  console.log('im clicked')
-  // Create the + symbol
-  const iElement = document.createElement('i');
-  iElement.classList.add('fas', 'fa-plus');
-  iElement.style.padding = '2px';
-  iElement.style.fontSize = 'small';
-  mainContent.appendChild(newTaskButton)
+
+
+
+document.addEventListener('click',(e)=>
+  { console.log(e.target)
+    if(e.target===newTaskItem)
+      {console.log(e.target)
+      {const newTaskButton = document.createElement('button');
+    const addItemDiv=document.createElement('div');
+    const titleDiv=document.createElement('div');
+    newTaskButton.type = 'button';
+    newTaskButton.classList.add('newTaskButton', 'addTask');
+    titleDiv.textContent=taskTitle;
+    // Create the h3 element
+    const h3Element = document.createElement('h3');
+    h3Element.style.fontSize = 'medium';
+    h3Element.style.paddingRight = '13px';
+    h3Element.textContent = 'ADD TASK';
+    console.log('im clicked')
+    // Create the + symbol
+    const iElement = document.createElement('i');
+    iElement.classList.add('fas', 'fa-plus');
+    iElement.style.padding = '2px';
+    iElement.style.fontSize = 'small';
+    newTaskButton.appendChild(h3Element);
+    newTaskButton.appendChild(iElement);
+    addItemDiv.appendChild(titleDiv);
+    addItemDiv.appendChild(newTaskButton);
+    
+    addItemDiv.classList.add('mainheading')
+    mainContent.appendChild(addItemDiv)
+    task();}}
   });
-}
 }
 export {project}
