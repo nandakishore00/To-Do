@@ -7,9 +7,7 @@ const newButton = document.querySelector(".newButton");
 const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
 var newTaskItem=document.createElement('button');  
-
-
-
+var taskTitle=''
 
 // event listeners to handle new button,edit and delete functioanlities in side bar
 newButton.addEventListener('click',()=>{
@@ -60,7 +58,7 @@ const delIcon=document.createElement('button');
 const editIcon=document.createElement('button');
 const itemIcons=document.createElement('div');
   newTaskItem = document.createElement('button');  
-  const taskTitle = newTaskInput.value;
+  taskTitle = newTaskInput.value;
   taskTitle=taskTitle.toUpperCase()
   if (taskTitle !== ''){
 
@@ -83,23 +81,25 @@ const itemIcons=document.createElement('div');
 //to handle main-content
 
 
+function mainHeading(){
+  
+}
 
 document.addEventListener('click',(e)=>
-  { console.log(e.target)
+  { console.log(e.target,mainContent.childNodes[1])
     if(e.target===newTaskItem)
-      {console.log(e.target)
-      {const newTaskButton = document.createElement('button');
+    {
+      const newTaskButton = document.createElement('button');
     const addItemDiv=document.createElement('div');
     const titleDiv=document.createElement('div');
     newTaskButton.type = 'button';
     newTaskButton.classList.add('newTaskButton', 'addTask');
-    titleDiv.textContent=taskTitle;
+    titleDiv.textContent=e.target.innerText;
     // Create the h3 element
     const h3Element = document.createElement('h3');
     h3Element.style.fontSize = 'medium';
     h3Element.style.paddingRight = '13px';
     h3Element.textContent = 'ADD TASK';
-    console.log('im clicked')
     // Create the + symbol
     const iElement = document.createElement('i');
     iElement.classList.add('fas', 'fa-plus');
@@ -109,10 +109,19 @@ document.addEventListener('click',(e)=>
     newTaskButton.appendChild(iElement);
     addItemDiv.appendChild(titleDiv);
     addItemDiv.appendChild(newTaskButton);
-    
     addItemDiv.classList.add('mainheading')
-    mainContent.appendChild(addItemDiv)
-    task();}}
+    console.log(addItemDiv,'asdasdasd')
+    var oldChild=document.createElement('div')
+    //instead of appending child to mainCotnent(appending will keep on adding the h3& add task button) replace child everytime we click on the project button
+    if (mainContent.childNodes.length>1) {
+      oldChild=mainContent.childNodes[1]
+      mainContent.replaceChild(addItemDiv,oldChild);
+    }
+    else{
+      mainContent.appendChild(addItemDiv)
+    }
+    task();
+      }
   });
 }
 export {project}
