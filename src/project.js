@@ -80,13 +80,8 @@ const itemIcons=document.createElement('div');
 }
 //to handle main-content
 
-
-function mainHeading(){
-  
-}
-
 document.addEventListener('click',(e)=>
-  { console.log(e.target,mainContent.childNodes[1])
+  {
     if(e.target===newTaskItem)
     {
       const newTaskButton = document.createElement('button');
