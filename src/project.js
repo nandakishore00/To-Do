@@ -81,9 +81,10 @@ const itemIcons=document.createElement('div');
 //to handle main-content
 
 document.addEventListener('click',(e)=>
-  {
-    if(e.target===newTaskItem)
+  { 
+    if(e.target.className==='newTaskItem')
     {
+      var oldChild=document.createElement('div')
       const newTaskButton = document.createElement('button');
     const addItemDiv=document.createElement('div');
     const titleDiv=document.createElement('div');
@@ -105,10 +106,10 @@ document.addEventListener('click',(e)=>
     addItemDiv.appendChild(titleDiv);
     addItemDiv.appendChild(newTaskButton);
     addItemDiv.classList.add('mainheading')
-    console.log(addItemDiv,'asdasdasd')
-    var oldChild=document.createElement('div')
+    
     //instead of appending child to mainCotnent(appending will keep on adding the h3& add task button) replace child everytime we click on the project button
     if (mainContent.childNodes.length>1) {
+      console.log(mainContent.childNodes[1])
       oldChild=mainContent.childNodes[1]
       mainContent.replaceChild(addItemDiv,oldChild);
     }
