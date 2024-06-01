@@ -1,14 +1,13 @@
 //function to create list of to-do tasks and display them in order
 export function toDo(taskData) {
   const { title, description, dueDate, priority } = taskData;
-  console.log('Task data (if available):', title, description);
-
-  const mainContent = document.querySelector('.main-content');
-  const todoList = document.createElement('div');
-  todoList.classList.add('todo-list');
-
+  const mainContent=document.querySelector('.main-content')
+  var todoList=document.querySelector('.todo-list')
+  if (!todoList) //adds all the to-do under 1 div tag
+  { todoList=document.createElement('div');}
   const todoItem = document.createElement('div');
   todoItem.classList.add('todo-item');
+  todoList.classList.add('todo-list'); // Correct method to add a class
 
   // Create the title element
   const titleElement = document.createElement('div');
@@ -50,11 +49,16 @@ export function toDo(taskData) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('fas','fa-trash');
   todoItem.appendChild(deleteButton);
+  
+  
   // Add an event listener to toggle the description container
   todoItem.addEventListener('click', () => {
     descriptionContainer.classList.toggle('hidden');
   });
-
-  todoList.appendChild(todoItem);
-  mainContent.appendChild(todoList);
+    todoList.appendChild(todoItem);
+    
+    console.log(mainContent.childNodes)
+    mainContent.appendChild(todoList);
+  
+ 
 }

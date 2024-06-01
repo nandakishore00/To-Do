@@ -3,7 +3,6 @@ import { toDo } from './to-do list.js';
 
 export function task() {
   const mainContent = document.querySelector('.main-content');
-console.log(mainContent.childNodes)
   // Get the main container element
   // Create the todo-Box-Container div
   const todoBoxContainer = document.createElement('div');
