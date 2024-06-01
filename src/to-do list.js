@@ -3,6 +3,7 @@ export function toDo(taskData) {
   const { title, description, dueDate, priority } = taskData;
   const mainContent=document.querySelector('.main-content')
   var todoList=document.querySelector('.todo-list')
+  const children=[]
   if (!todoList) //adds all the to-do under 1 div tag
   { todoList=document.createElement('div');}
   const todoItem = document.createElement('div');
@@ -55,10 +56,11 @@ export function toDo(taskData) {
   todoItem.addEventListener('click', () => {
     descriptionContainer.classList.toggle('hidden');
   });
-    todoList.appendChild(todoItem);
-    
-    console.log(mainContent.childNodes)
-    mainContent.appendChild(todoList);
+  todoList.appendChild(todoItem);
+  children.push(todoList)
+  children.forEach(child=>{
+    mainContent.appendChild(child)
+    })
   
  
 }
