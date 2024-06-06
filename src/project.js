@@ -1,5 +1,6 @@
 //js file for creating the functionalities for sidebar
-import {task} from './task.js'
+import { tasksByProject } from './tasksByProject.js';
+import { task } from './task.js';
 function project(){
 const forms = document.querySelector("form");
 const mainContent=document.querySelector('.main-content')
@@ -8,7 +9,6 @@ const newTaskInput = document.querySelector('.newTaskInput');
 const taskList = document.querySelector(".taskList");
 var newTaskItem=document.createElement('button');  
 var taskTitle=''
-
 // event listeners to handle new button,edit and delete functioanlities in side bar
 newButton.addEventListener('click',()=>{
   forms.classList.toggle('hidden');
@@ -77,6 +77,9 @@ const itemIcons=document.createElement('div');
     forms.classList.add('hidden');
   
   }
+  // if(!tasksByProject[taskTitle]){
+  //   tasksByProject[taskTitle]={}
+  // }
 }
 //to handle main-content
 
@@ -84,8 +87,9 @@ document.addEventListener('click',(e)=>
   { 
     if(e.target.className==='newTaskItem')
     {
-      var oldChild=document.createElement('div')
-      const newTaskButton = document.createElement('button');
+      console.log(mainContent.childNodes[2])
+    var oldChild=document.createElement('div')
+    const newTaskButton = document.createElement('button');
     const addItemDiv=document.createElement('div');
     const titleDiv=document.createElement('div');
     newTaskButton.type = 'button';
@@ -109,15 +113,34 @@ document.addEventListener('click',(e)=>
     
     //instead of appending child to mainCotnent(appending will keep on adding the h3& add task button) replace child everytime we click on the project button
     if (mainContent.childNodes.length>1) {
-      console.log(mainContent.childNodes[1])
       oldChild=mainContent.childNodes[1]
       mainContent.replaceChild(addItemDiv,oldChild);
     }
+    
     else{
       mainContent.appendChild(addItemDiv)
     }
-    task();
-      }
+    const title=e.target.innerText
+    console.log(tasksByProject,'lafda')
+    if (!tasksByProject[title]) {
+      tasksByProject[title] = {};
+    }
+    if (!tasksByProject[title].value){
+      tasksByProject[title].value=[]
+    }
+
+    if(mainContent.childNodes[2]){console.log(mainContent.childNodes[2])
+      mainContent.childNodes[2].remove()
+    }
+      const children =tasksByProject[title].value
+      children.forEach((child)=>{mainContent.appendChild(child)})
+      console.log(tasksByProject[title].value,'projectValue');
+  
+    // if(tasksByProject[title].value){}
+    task(e);}
+      
   });
 }
 export {project}
+
+

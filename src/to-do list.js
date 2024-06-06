@@ -1,9 +1,9 @@
 //function to create list of to-do tasks and display them in order
-export function toDo(taskData) {
+import { tasksByProject } from './tasksByProject.js';
+export function toDo(e,taskData) {
   const { title, description, dueDate, priority } = taskData;
   const mainContent=document.querySelector('.main-content')
   var todoList=document.querySelector('.todo-list')
-  const children=[]
   if (!todoList) //adds all the to-do under 1 div tag
   { todoList=document.createElement('div');}
   const todoItem = document.createElement('div');
@@ -55,12 +55,18 @@ export function toDo(taskData) {
   // Add an event listener to toggle the description container
   todoItem.addEventListener('click', () => {
     descriptionContainer.classList.toggle('hidden');
-  });
-  todoList.appendChild(todoItem);
-  children.push(todoList)
-  children.forEach(child=>{
-    mainContent.appendChild(child)
-    })
-  
- 
+});
+
+todoList.appendChild(todoItem);
+const projectKey = e.target.innerText;
+console.log(projectKey,tasksByProject)
+if (!tasksByProject[projectKey]) {
+    tasksByProject[projectKey] = {
+        title: projectKey,
+        value: []
+    };
+}
+console.log(tasksByProject[projectKey],'to-dolistProject')
+tasksByProject[projectKey].value.push(todoList);
+mainContent.appendChild(todoList); 
 }

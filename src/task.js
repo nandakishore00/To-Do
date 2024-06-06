@@ -1,9 +1,9 @@
 //js file for creating a to-do box which takes title, description, date and priority 
 import { toDo } from './to-do list.js';
-
-export function task() {
-  const mainContent = document.querySelector('.main-content');
+export function task(e) {
+  const event=e
   // Get the main container element
+  const mainContent=document.querySelector('.main-content')
   // Create the todo-Box-Container div
   const todoBoxContainer = document.createElement('div');
   todoBoxContainer.classList.add('todo-Box-Container');
@@ -123,7 +123,6 @@ export function task() {
 
   // Append the toDoBox to the todoBoxContainer
   todoBoxContainer.appendChild(toDoBox);
-
   const addTask = document.querySelector('.addTask');
   addTask.addEventListener('click', (e) => {
     // Append the todoBoxContainer to the main container
@@ -163,6 +162,6 @@ export function task() {
       dueDate: dueDate.value,
       priority: priority.value,
     };
-    toDo(exportValues);
+    toDo(event,exportValues);
   });
 }
