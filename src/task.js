@@ -155,15 +155,6 @@ export function task(e,existingValues=null) {
   });
 
   form.addEventListener('submit', (e) => {
-    titleInput.value = '';
-    dueDateInput.value = '';
-    descriptionTextarea.value = '';
-    toDoBox.classList.toggle('hidden');
-    mainContent.removeChild(todoBoxContainer);
-    e.preventDefault();
-  });
-
-  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const taskData = {
       title: titleInput.value,
@@ -176,6 +167,3 @@ export function task(e,existingValues=null) {
     mainContent.removeChild(todoBoxContainer);
   });
 }
-
-
-
