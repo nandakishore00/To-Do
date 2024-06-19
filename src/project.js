@@ -47,10 +47,6 @@ taskList.addEventListener('click', (event) => {
   ;}
 
 }});
-
-console.log(newTaskItem)
-
-
 // function to handle enter key 
 function handleEnter() {  
 const content=document.createElement('span');
@@ -81,19 +77,19 @@ const itemIcons=document.createElement('div');
   //   tasksByProject[taskTitle]={}
   // }
 }
+
 //to handle main-content
 
 document.addEventListener('click',(e)=>
   { 
     if(e.target.className==='newTaskItem')
     {
-      console.log(mainContent.childNodes[2])
     var oldChild=document.createElement('div')
-    const newTaskButton = document.createElement('button');
+    const newToDoButton = document.createElement('button');
     const addItemDiv=document.createElement('div');
     const titleDiv=document.createElement('div');
-    newTaskButton.type = 'button';
-    newTaskButton.classList.add('newTaskButton', 'addTask');
+    newToDoButton.type = 'button';
+    newToDoButton.classList.add('newToDoButton');
     titleDiv.textContent=e.target.innerText;
     // Create the h3 element
     const h3Element = document.createElement('h3');
@@ -105,10 +101,10 @@ document.addEventListener('click',(e)=>
     iElement.classList.add('fas', 'fa-plus');
     iElement.style.padding = '2px';
     iElement.style.fontSize = 'small';
-    newTaskButton.appendChild(h3Element);
-    newTaskButton.appendChild(iElement);
+    newToDoButton.appendChild(h3Element);
+    newToDoButton.appendChild(iElement);
     addItemDiv.appendChild(titleDiv);
-    addItemDiv.appendChild(newTaskButton);
+    addItemDiv.appendChild(newToDoButton);
     addItemDiv.classList.add('mainheading')
     
     //instead of appending child to mainCotnent(appending will keep on adding the h3& add task button) replace child everytime we click on the project button
@@ -121,7 +117,6 @@ document.addEventListener('click',(e)=>
       mainContent.appendChild(addItemDiv)
     }
     const title=e.target.innerText
-    console.log(tasksByProject,'lafda')
     if (!tasksByProject[title]) {
       tasksByProject[title] = {};
     }
@@ -129,17 +124,16 @@ document.addEventListener('click',(e)=>
       tasksByProject[title].value=[]
     }
 
-    if(mainContent.childNodes[2]){console.log(mainContent.childNodes[2])
+    if(mainContent.childNodes[2]){
       mainContent.childNodes[2].remove()
     }
       const children =tasksByProject[title].value
       children.forEach((child)=>{mainContent.appendChild(child)})
-      console.log(tasksByProject[title].value,'projectValue');
-  
     // if(tasksByProject[title].value){}
-    task(e);}
-      
-  });
+    task(e)
+  }
+  
+});
 }
 export {project}
 

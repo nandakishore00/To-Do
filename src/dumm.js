@@ -1,18 +1,17 @@
-//task.js file for creating a to-do box which takes title, description, date and priority 
-import { toDo } from './to-do list.js';
-export function task(e,existingValues=null) {
-  
-  const event=e
-  // Get the main container element
-  const mainContent=document.querySelector('.main-content')
 
+import { toDo } from './to-do list.js'; 
+export function task(existingValues = null) {
+  const mainContent = document.querySelector('.main-content');
+  // Remove existing to-do box container if it exists
   const existingTodoBoxContainer = document.querySelector('.todo-Box-Container');
   if (existingTodoBoxContainer) {
     mainContent.removeChild(existingTodoBoxContainer);
   }
+
   // Create the todo-Box-Container div
   const todoBoxContainer = document.createElement('div');
   todoBoxContainer.classList.add('todo-Box-Container');
+
   // Create the toDoBox div
   const toDoBox = document.createElement('div');
   toDoBox.classList.add('toDoBox', 'hidden');
@@ -24,8 +23,6 @@ export function task(e,existingValues=null) {
   // Create the h3 element
   const heading = document.createElement('h3');
   heading.textContent = 'TO-DO ITEM';
-
-  // Append the h3 to the itemHeading div
   itemHeading.appendChild(heading);
 
   // Create the form div
@@ -68,7 +65,6 @@ export function task(e,existingValues=null) {
   dueDateInput.name = 'due-date';
   dueDateInput.required = true;
   dueDateInput.placeholder = 'DD-MM-YYYY';
-
   // Create the priority select
   const prioritySelect = document.createElement('select');
   prioritySelect.id = 'priority';
@@ -105,10 +101,11 @@ export function task(e,existingValues=null) {
   submitButton.type = 'submit';
   submitButton.classList.add('submitBox');
   submitButton.textContent = 'Submit';
+
   // Create the cancel button
   const cancelButton = document.createElement('button');
   cancelButton.type = 'submit';
-  cancelButton.classList.add('cancel');
+  cancelButton.classList.add('submitBox');
   cancelButton.textContent = 'Cancel';
 
   // Append the submit and cancel buttons to the addCancelButtons div
@@ -124,11 +121,21 @@ export function task(e,existingValues=null) {
   formDiv.appendChild(form);
 
   // Append the itemHeading and formDiv to the toDoBox
-  toDoBox.appendChild(itemHeading)
+  toDoBox.appendChild(itemHeading);
   toDoBox.appendChild(formDiv);
 
   // Append the toDoBox to the todoBoxContainer
   todoBoxContainer.appendChild(toDoBox);
+
+  // Populate the form with existing values if they are provided
+  if (existingValues) {
+    titleInput.value = existingValues.title;
+    descriptionTextarea.value = existingValues.description;
+    dueDateInput.value = existingValues.dueDate;
+    prioritySelect.value = existingValues.priority;
+  }
+
+  // Append the todoBoxContainer to the main content
   const newToDoButton = document.querySelector('.newToDoButton');
   newToDoButton.addEventListener('click', (e) => {
     console.log('im also clicked')
@@ -139,22 +146,7 @@ export function task(e,existingValues=null) {
     e.preventDefault();
 
   });
-  if (existingValues) {
-    titleInput.value = existingValues.title;
-    descriptionTextarea.value = existingValues.description;
-    dueDateInput.value = existingValues.dueDate;
-    prioritySelect.value = existingValues.priority;
-  }
   cancelButton.addEventListener('click', (e) => {
-    titleInput.value = '';
-    dueDateInput.value = '';
-    descriptionTextarea.value = '';
-    toDoBox.classList.toggle('hidden');
-    mainContent.removeChild(todoBoxContainer);
-    e.preventDefault();
-  });
-
-  form.addEventListener('submit', (e) => {
     titleInput.value = '';
     dueDateInput.value = '';
     descriptionTextarea.value = '';
@@ -176,6 +168,4 @@ export function task(e,existingValues=null) {
     mainContent.removeChild(todoBoxContainer);
   });
 }
-
-
 
