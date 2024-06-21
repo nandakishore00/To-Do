@@ -1,22 +1,26 @@
 //task.js file for creating a to-do box which takes title, description, date and priority 
-import { toDo } from './to-do list.js';
+import { toDo } from './listofToDos.js';
 export function task(e,existingValues=null) {
-  
   const event=e
-  // Get the main container element
   const mainContent=document.querySelector('.main-content')
-
   const existingTodoBoxContainer = document.querySelector('.todo-Box-Container');
+  const todoBoxContainer = document.createElement('div');
+  const toDoBox = document.createElement('div');
+  const newToDoButton = document.querySelector('.newToDoButton');
   if (existingTodoBoxContainer) {
     mainContent.removeChild(existingTodoBoxContainer);
   }
   // Create the todo-Box-Container div
-  const todoBoxContainer = document.createElement('div');
   todoBoxContainer.classList.add('todo-Box-Container');
   // Create the toDoBox div
-  const toDoBox = document.createElement('div');
-  toDoBox.classList.add('toDoBox', 'hidden');
-
+  toDoBox.classList.add('toDoBox');
+  if (!toDoBox.classList.contains('hidden')){
+toDoBox.classList.add('hidden')
+  }
+if (event.target.className==="far fa-edit"){
+  mainContent.appendChild(todoBoxContainer);
+  toDoBox.classList.toggle('hidden');
+}
   // Create the itemHeading div
   const itemHeading = document.createElement('div');
   itemHeading.classList.add('itemHeading');
@@ -129,16 +133,15 @@ export function task(e,existingValues=null) {
 
   // Append the toDoBox to the todoBoxContainer
   todoBoxContainer.appendChild(toDoBox);
-  const newToDoButton = document.querySelector('.newToDoButton');
-  newToDoButton.addEventListener('click', (e) => {
-    console.log('im also clicked')
-    // Append the todoBoxContainer to the main container
+  
+  if (event.target.innerText==="ADD TASK")
+    {
+    console.log(event.target.innerText)
     newToDoButton.disabled=true
-    mainContent.appendChild(todoBoxContainer);
     toDoBox.classList.toggle('hidden');
-    e.preventDefault();
+  // Append the todoBoxContainer to the main container
+    mainContent.appendChild(todoBoxContainer);}
 
-  });
   if (existingValues) {
     titleInput.value = existingValues.title;
     descriptionTextarea.value = existingValues.description;
@@ -148,6 +151,7 @@ export function task(e,existingValues=null) {
   cancelButton.addEventListener('click', (e) => {
     titleInput.value = '';
     dueDateInput.value = '';
+    newToDoButton.disabled=false
     descriptionTextarea.value = '';
     toDoBox.classList.toggle('hidden');
     mainContent.removeChild(todoBoxContainer);
@@ -156,14 +160,43 @@ export function task(e,existingValues=null) {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    newToDoButton.disabled=false //enables add task button once submitted the form
     const taskData = {
       title: titleInput.value,
       description: descriptionTextarea.value,
       dueDate: dueDateInput.value,
       priority: prioritySelect.value,
     };
-    toDo(e, taskData);
+    if(event.target.className==="far fa-edit")
+    {console.log(taskData)
+
+    }
+    toDo(event, taskData);
     toDoBox.classList.toggle('hidden');
     mainContent.removeChild(todoBoxContainer);
   });
+
+
 }
+
+
+// submitButton.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   const title = document.getElementById('title');
+//   const dueDate = document.getElementById('due-date');
+//   const description = document.getElementById('description');
+//   const priority = document.getElementById('priority');
+//   newToDoButton.disabled=false
+//   const TDBC=document.querySelector('.todo-Box-Container')
+//   toDoBox.classList.toggle('hidden');
+//   mainContent.removeChild(TDBC);
+  
+//   const exportValues = {
+//     title: title.value,
+//     description: description.value,
+//     dueDate: dueDate.value,
+//     priority: priority.value,
+//   };
+//   toDo(event,exportValues);
+// });
+// }

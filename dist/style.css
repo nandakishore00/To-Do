@@ -54,7 +54,7 @@
   color: white;
   border: 1.5px solid #6fb86f
 }
- .taskList{
+ .projectList{
   display:flex;
   flex-direction: column;
 } 
@@ -112,6 +112,7 @@
   justify-content: space-between;
   margin-bottom: 2rem;
 }
+
 /* toDo box CSS */
 
  .addTask{

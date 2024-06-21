@@ -1,4 +1,3 @@
-// 
 // import { tasksByProject } from './tasksByProject.js';
 // import {task} from './task.js'
 // export function toDo(e,taskData) {
@@ -97,30 +96,26 @@
 
 // tasksByProject[projectKey].value.push(todoList);
 // mainContent.appendChild(todoList); 
-// }
+//}
 
 
 
 
-
-// toDo.js
-// toDo.js
 //function to create list of to-do tasks and display them in order
 import { tasksByProject } from './tasksByProject.js';
-import { task } from './task.js';
+import { task } from './toDoContainer.js';
 export function toDo(e, taskData) {
+    console.log('herer')
     const { title, description, dueDate, priority } = taskData;
     const mainContent = document.querySelector('.main-content');
     let todoList = document.querySelector('.todo-list');
 
+    //adds all the to-do under 1 div tag
     if (!todoList) {
-        todoList = document.createElement('div');
-        todoList.classList.add('todo-list');
-    }
-
+    todoList = document.createElement('div');}
+    todoList.classList.add('todo-list');
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo-item');
-
     const titleElement = document.createElement('div');
     titleElement.classList.add('title');
     titleElement.textContent = title;
@@ -156,46 +151,60 @@ export function toDo(e, taskData) {
     deleteButton.classList.add('fas', 'fa-trash');
     todoItem.appendChild(deleteButton);
 
-    todoItem.addEventListener('click', () => {
-        descriptionContainer.classList.toggle('hidden');
-    });
+    // todoItem.addEventListener('click', () => {
+    //     descriptionContainer.classList.toggle('hidden');
+    // });
 
     todoList.appendChild(todoItem);
 
-    const projectKey = e.target.innerText;
-    if (!tasksByProject[projectKey]) {
-        tasksByProject[projectKey] = {
-            title: projectKey,
-            value: []
+    const projectKey = e.target.parentNode.previousElementSibling.innerText
+    if (tasksByProject.projectKey==null) {
+        tasksByProject.projectKey = {
+            title:title,
+            desc:dueDate,
+            dueDate:dueDate,
+            priority:priority
         };
     }
-
-    tasksByProject[projectKey].value.push(todoItem);
+    
+    //tasksByProject[projectKey].value.push(todoItem);
     mainContent.appendChild(todoList);
-
     // Add event listener for the delete button
     deleteButton.addEventListener('click', (deleteEvent) => {
-        deleteEvent.stopPropagation();
+        deleteEvent.preventDefault();
         todoItem.remove();
         tasksByProject[projectKey].value = tasksByProject[projectKey].value.filter(item => item !== todoItem);
     });
 
     // Add event listener for the edit button
     editButton.addEventListener('click', (editEvent) => {
-        editEvent.stopPropagation();
+        editEvent.preventDefault();
         const existingData = {
             title: titleElement.textContent,
             description: descriptionElement.textContent,
             dueDate: dateElement.textContent,
             priority: priority
         };
-
-        task(existingData);
-
+        
         // Remove the current todo-item from the list
-        todoList.removeChild(todoItem);
-
+        task(editEvent,existingData);
+        
+        titleElement.textContent = existingData.title;
+        descriptionElement.textContent = existingData.description;
+        dateElement.textContent = existingData.dueDate;
+        if (existingData.priority === 'low') {
+            todoItem.style.border = '2px solid red';
+        } else if (existingData.priority === 'medium') {
+            todoItem.style.border = '2px solid orange';
+        } else if (existingData.priority === 'high') {
+            todoItem.style.border = '2px solid green';
+        }
+        
         const projectData = tasksByProject[projectKey];
-        projectData.value = projectData.value.filter(item => item !== todoData);
+        projectData.value = projectData.value.filter(item => item !== todoItem);
+        
     });
+    console.log(tasksByProject,todoItem)
+
 }
+
