@@ -108,19 +108,17 @@ export function toDo(e, taskData) {
     console.log('herer')
     const { title, description, dueDate, priority } = taskData;
     const mainContent = document.querySelector('.main-content');
-    let todoList = document.querySelector('.todo-list');
-
+    const todoList = document.querySelector('.todo-list');
+    const uniqueId = Date.now();
     //adds all the to-do under 1 div tag
-    if (!todoList) {
-    todoList = document.createElement('div');}
-    todoList.classList.add('todo-list');
     const todoItem = document.createElement('div');
     todoItem.classList.add('todo-item');
+    todoItem.setAttribute('data-id', uniqueId);
     const titleElement = document.createElement('div');
     titleElement.classList.add('title');
     titleElement.textContent = title;
     todoItem.appendChild(titleElement);
-
+    
     if (priority === 'low') {
         todoItem.style.border = '2px solid red';
     } else if (priority === 'medium') {
@@ -131,13 +129,11 @@ export function toDo(e, taskData) {
 
     const descriptionContainer = document.createElement('div');
     descriptionContainer.classList.add('description-container');
-
     const descriptionElement = document.createElement('div');
     descriptionElement.classList.add('description');
     descriptionElement.textContent = description;
     descriptionContainer.appendChild(descriptionElement);
     todoItem.appendChild(descriptionContainer);
-
     const dateElement = document.createElement('div');
     dateElement.classList.add('due-date');
     dateElement.textContent = dueDate;
@@ -156,24 +152,33 @@ export function toDo(e, taskData) {
     // });
 
     todoList.appendChild(todoItem);
-
-    const projectKey = e.target.parentNode.previousElementSibling.innerText
-    if (tasksByProject.projectKey==null) {
-        tasksByProject.projectKey = {
-            title:title,
-            desc:dueDate,
-            dueDate:dueDate,
-            priority:priority
-        };
+    const projectKey = document.querySelector('.mainheading').childNodes[0].innerText;
+    if (tasksByProject[projectKey]==null) {
+        console.log('lolpochka')
+        tasksByProject[projectKey] = { tasks:[]};
     }
+    tasksByProject[projectKey].tasks.push({
+        id: uniqueId,
+        title: title,
+        description: description,
+        dueDate: dueDate,
+        priority: priority
+    });
     
     //tasksByProject[projectKey].value.push(todoItem);
-    mainContent.appendChild(todoList);
     // Add event listener for the delete button
     deleteButton.addEventListener('click', (deleteEvent) => {
         deleteEvent.preventDefault();
-        todoItem.remove();
-        tasksByProject[projectKey].value = tasksByProject[projectKey].value.filter(item => item !== todoItem);
+        todoItem.remove();//need to remove the todoItem first in order to retrieve the id of that particualr item 
+        const todoId = todoItem.getAttribute('data-id');
+        console.log(todoId,'lolpochka')
+        
+        const todoIndex = tasksByProject[projectKey].tasks.findIndex(item => String(item.id)=== todoId);
+        
+        tasksByProject[projectKey].tasks.splice(todoIndex, 1);
+        console.log(tasksByProject,'lolpochka')
+        
+        
     });
 
     // Add event listener for the edit button
@@ -206,5 +211,5 @@ export function toDo(e, taskData) {
     });
     console.log(tasksByProject,todoItem)
 
-}
 
+}

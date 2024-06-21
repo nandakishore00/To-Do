@@ -120,10 +120,10 @@ document.addEventListener('click',(e)=>
       
     }
     const title=e.target.innerText
-    if (!(tasksByProject[title])) {
-      tasksByProject[title] = {};
+    // if (!(tasksByProject[title])) {
+    //   tasksByProject[title] = {};
 
-    }
+    // }
     if(mainContent.childNodes[2]){
       mainContent.childNodes[2].remove()
     }

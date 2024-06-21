@@ -160,6 +160,7 @@ if (event.target.className==="far fa-edit"){
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    
     newToDoButton.disabled=false //enables add task button once submitted the form
     const taskData = {
       title: titleInput.value,
