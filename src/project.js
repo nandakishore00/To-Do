@@ -125,7 +125,7 @@ function displayProjectTasks(projectTitle) {
 
 function createTodoItem(taskData, projectTitle) {
   const { id, title, description, dueDate, priority } = taskData;
-  const todoItem = document.createElement('div');
+const todoItem = document.createElement('div');
   todoItem.classList.add('todo-item');
   todoItem.setAttribute('data-id', id);
   const titleElement = document.createElement('div');
@@ -205,70 +205,3 @@ function createAddTaskButton() {
 }
 }
 export {project}
-
-
-
-
-
-
-
-
-
-
-
-
-// document.addEventListener('click',(e)=>
-//   { 
-//     if(e.target.className==='newTaskItem')
-//     {
-//     // var oldChild=document.createElement('div')
-//     const newToDoButton = document.createElement('button');
-//     const addItemDiv=document.querySelector('.mainheading');
-//     const titleDiv=document.createElement('div');
-//     const h3Element = document.createElement('h3');
-//     const iElement = document.createElement('i');
-//     newToDoButton.type = 'button';
-//     newToDoButton.classList.add('newToDoButton');
-//     titleDiv.textContent=e.target.innerText;
-//     // Create the h3 for ADDTASK
-    
-    
-    
-//     //instead of appending child to mainCotnent(appending will keep on adding the h3& add task button) replace child everytime we click on the project button
-//     if (addItemDiv.childNodes.length>1) {
-//       addItemDiv.childNodes[0].innerText=e.target.innerText
-//     }
-    
-//     else{
-//       h3Element.style.fontSize = 'medium';
-//     h3Element.style.paddingRight = '13px';
-//     h3Element.textContent = 'ADD TASK';
-//     // Create the + symbol
-    
-//     iElement.classList.add('fas', 'fa-plus');
-//     iElement.style.padding = '2px';
-//     iElement.style.fontSize = 'small';
-//     newToDoButton.appendChild(h3Element);
-//     newToDoButton.appendChild(iElement);
-//     // addItemDiv
-//     addItemDiv.appendChild(titleDiv);
-//     addItemDiv.appendChild(newToDoButton);
-      
-//     }
-//     const title=e.target.innerText
-//     // if (!(tasksByProject[title])) {
-//     //   tasksByProject[title] = {};
-
-//     // }
-//     if(mainContent.childNodes[2]){
-//       mainContent.childNodes[2].remove()
-//     }
-//     console.log(mainContent.childNodes,'after')
-//       const children =tasksByProject
-      
-//       children.forEach((child)=>{
-//         mainContent.appendChild(child)})
-//     newToDoButton.addEventListener('click',(event)=>{task(event)})
-//   }
-  
-// });

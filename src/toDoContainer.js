@@ -178,28 +178,4 @@ if (event.target.className==="far fa-edit"){
     toDoBox.classList.toggle('hidden');
     mainContent.removeChild(todoBoxContainer);
   });
-
-
 }
-
-
-// submitButton.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   const title = document.getElementById('title');
-//   const dueDate = document.getElementById('due-date');
-//   const description = document.getElementById('description');
-//   const priority = document.getElementById('priority');
-//   newToDoButton.disabled=false
-//   const TDBC=document.querySelector('.todo-Box-Container')
-//   toDoBox.classList.toggle('hidden');
-//   mainContent.removeChild(TDBC);
-  
-//   const exportValues = {
-//     title: title.value,
-//     description: description.value,
-//     dueDate: dueDate.value,
-//     priority: priority.value,
-//   };
-//   toDo(event,exportValues);
-// });
-// }
