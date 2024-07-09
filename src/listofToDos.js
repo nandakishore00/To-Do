@@ -105,9 +105,9 @@
 import { tasksByProject } from './tasksByProject.js';
 import { task } from './toDoContainer.js';
 export function toDo(e, taskData) {
-    console.log('herer')
+    
     const { title, description, dueDate, priority } = taskData;
-    const mainContent = document.querySelector('.main-content');
+    const mainContent = document.querySelector('.mainheading');
     const todoList = document.querySelector('.todo-list');
     const uniqueId = Date.now();
     //adds all the to-do under 1 div tag
@@ -152,11 +152,11 @@ export function toDo(e, taskData) {
     // });
 
     todoList.appendChild(todoItem);
-    const projectKey = document.querySelector('.mainheading').childNodes[0].innerText;
-    if (tasksByProject[projectKey]==null) {
-        console.log('lolpochka')
-        tasksByProject[projectKey] = { tasks:[]};
-    }
+    console.log(mainContent.children[0])
+    const projectKey = mainContent.children[0].innerHTML;
+    if (!tasksByProject[projectKey]) {
+        tasksByProject[projectKey] = { tasks: [] };
+      } 
     tasksByProject[projectKey].tasks.push({
         id: uniqueId,
         title: title,
@@ -164,21 +164,14 @@ export function toDo(e, taskData) {
         dueDate: dueDate,
         priority: priority
     });
-    
-    //tasksByProject[projectKey].value.push(todoItem);
     // Add event listener for the delete button
     deleteButton.addEventListener('click', (deleteEvent) => {
         deleteEvent.preventDefault();
         todoItem.remove();//need to remove the todoItem first in order to retrieve the id of that particualr item 
         const todoId = todoItem.getAttribute('data-id');
-        console.log(todoId,'lolpochka')
-        
         const todoIndex = tasksByProject[projectKey].tasks.findIndex(item => String(item.id)=== todoId);
-        
         tasksByProject[projectKey].tasks.splice(todoIndex, 1);
-        console.log(tasksByProject,'lolpochka')
-        
-        
+        console.log(tasksByProject,'lolpochka')        
     });
 
     // Add event listener for the edit button

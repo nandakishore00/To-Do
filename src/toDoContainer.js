@@ -172,7 +172,7 @@ if (event.target.className==="far fa-edit"){
     {console.log(taskData)
 
     }
-    toDo(event, taskData);
+    toDo(e, taskData);
     toDoBox.classList.toggle('hidden');
     mainContent.removeChild(todoBoxContainer);
   });
