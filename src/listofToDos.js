@@ -5,13 +5,10 @@ import { tasksByProject } from './tasksByProject.js';
 import { task } from './toDoContainer.js';
 export function updateTodoItem(todoItem, updatedData) {
     const titleElement = todoItem.querySelector('.title');
-    const descriptionElement = todoItem.querySelector('.description');
     const dateElement = todoItem.querySelector('.due-date');
 
     titleElement.textContent = updatedData.title;
-    descriptionElement.textContent = updatedData.description;
     dateElement.textContent = updatedData.dueDate;
-
     if (updatedData.priority === 'low') {
         todoItem.style.border = '2px solid red';
     } else if (updatedData.priority === 'medium') {
@@ -74,10 +71,6 @@ export function toDo(e, taskData) {
     deleteButton.classList.add('fas', 'fa-trash');
     todoItem.appendChild(deleteButton);
 
-    // todoItem.addEventListener('click', () => {
-    //     descriptionContainer.classList.toggle('hidden');
-    // });
-
     todoList.appendChild(todoItem);
     console.log(mainContent.children[0])
     const projectKey = mainContent.children[0].innerHTML;
@@ -98,7 +91,7 @@ export function toDo(e, taskData) {
         const todoId = todoItem.getAttribute('data-id');
         const todoIndex = tasksByProject[projectKey].tasks.findIndex(item => String(item.id)=== todoId);
         tasksByProject[projectKey].tasks.splice(todoIndex, 1);
-        console.log(tasksByProject,'lolpochka')        
+       
     });
 
     // Add event listener for the edit button
@@ -111,7 +104,6 @@ export function toDo(e, taskData) {
             priority: priority
         };
         
-        // Remove the current todo-item from the list
         task(editEvent,existingData);
         
     });

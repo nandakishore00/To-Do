@@ -50,16 +50,9 @@ if (event.target.className==="far fa-edit"){
   titleInput.name = 'title';
   titleInput.required = true;
   titleInput.placeholder = 'Title';
-
-  // Create the description textarea
-  const descriptionTextarea = document.createElement('textarea');
-  descriptionTextarea.id = 'description';
-  descriptionTextarea.name = 'description';
-  descriptionTextarea.placeholder = 'Description';
-
-  // Append the title input and description textarea to the first form-group div
+  // Append the title input to the first form-group div
   formGroup1.appendChild(titleInput);
-  formGroup1.appendChild(descriptionTextarea);
+  
 
   // Create the second form-group div
   const formGroup2 = document.createElement('div');
@@ -136,7 +129,7 @@ if (event.target.className==="far fa-edit"){
   
   if (event.target.innerText==="ADD TASK")
     {
-    console.log(event.target.innerText)
+    
     newToDoButton.disabled=true
     toDoBox.classList.toggle('hidden');
   // Append the todoBoxContainer to the main container

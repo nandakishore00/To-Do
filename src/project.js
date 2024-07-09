@@ -74,9 +74,7 @@ const itemIcons=document.createElement('div');
     forms.classList.add('hidden');
   
   }
-  // if(!tasksByProject[taskTitle]){
-  //   tasksByProject[taskTitle]={}
-  // }
+
 }
 
 //to handle main-content
@@ -104,25 +102,21 @@ function displayProjectTasks(projectTitle) {
     mainContent.querySelector('.mainheading').appendChild(newTitleDiv);
   }
 
-  // Display tasks for the selected project
-  if (tasksByProject[projectTitle] && tasksByProject[projectTitle].tasks) {
-    tasksByProject[projectTitle].tasks.forEach(task => {
-      const todoItem = createTodoItem(task, projectTitle);
-      todoList.appendChild(todoItem);
-      console.log('po ra pooka')
-    });
-  }
-  else {
-    console.log('No tasks found for project:', projectTitle,tasksByProject);}
-
   // Add the "ADD TASK" button if it doesn't exist
   let newToDoButton = mainContent.querySelector('.newToDoButton');
   if (!newToDoButton) {
     newToDoButton = createAddTaskButton();
     mainContent.querySelector('.mainheading').appendChild(newToDoButton);
   }
-}
+  // Display tasks for the selected project
+  if (tasksByProject[projectTitle] && tasksByProject[projectTitle].tasks) {
+    tasksByProject[projectTitle].tasks.forEach(task => {
+      const todoItem = createTodoItem(task, projectTitle);
+      todoList.appendChild(todoItem);
+    });
+  }
 
+}
 function createTodoItem(taskData, projectTitle) {
   const { id, title, description, dueDate, priority } = taskData;
 const todoItem = document.createElement('div');
@@ -132,11 +126,6 @@ const todoItem = document.createElement('div');
   titleElement.classList.add('title');
   titleElement.textContent = title;
   todoItem.appendChild(titleElement);
-
-  const descElement = document.createElement('div');
-  descElement.classList.add('description');
-  descElement.textContent = description;
-  todoItem.appendChild(descElement);
 
   const dateElement = document.createElement('div');
   dateElement.classList.add('due-date');
@@ -169,7 +158,6 @@ const todoItem = document.createElement('div');
             dueDate: dateElement.textContent,
             priority: priority
         };
-        
         // Remove the current todo-item from the list
         task(editEvent,existingData);
   });
