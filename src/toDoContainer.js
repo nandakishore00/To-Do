@@ -1,5 +1,5 @@
 //task.js file for creating a to-do box which takes title, description, date and priority 
-import { toDo } from './listofToDos.js';
+import { toDo,updateTodoItem } from './listofToDos.js';
 export function task(e,existingValues=null) {
   const event=e
   const mainContent=document.querySelector('.main-content')
@@ -169,10 +169,12 @@ if (event.target.className==="far fa-edit"){
       priority: prioritySelect.value,
     };
     if(event.target.className==="far fa-edit")
-    {console.log(taskData)
+    {updateTodoItem(event.target.closest('.todo-item'), taskData);
 
     }
-    toDo(e, taskData);
+    else {
+      toDo(e, taskData);
+  }
     toDoBox.classList.toggle('hidden');
     mainContent.removeChild(todoBoxContainer);
   });

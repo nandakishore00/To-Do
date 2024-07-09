@@ -161,8 +161,17 @@ function createTodoItem(taskData, projectTitle) {
   }
 
   // Add event listeners for edit and delete
-  editButton.addEventListener('click', () => {
-    // Implement edit functionality
+  editButton.addEventListener('click', (editEvent) => {
+    editEvent.preventDefault();
+        const existingData = {
+            title: titleElement.textContent,
+            description: descriptionElement.textContent,
+            dueDate: dateElement.textContent,
+            priority: priority
+        };
+        
+        // Remove the current todo-item from the list
+        task(editEvent,existingData);
   });
 
   deleteButton.addEventListener('click', () => {

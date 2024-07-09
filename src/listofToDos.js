@@ -104,6 +104,34 @@
 //function to create list of to-do tasks and display them in order
 import { tasksByProject } from './tasksByProject.js';
 import { task } from './toDoContainer.js';
+export function updateTodoItem(todoItem, updatedData) {
+    const titleElement = todoItem.querySelector('.title');
+    const descriptionElement = todoItem.querySelector('.description');
+    const dateElement = todoItem.querySelector('.due-date');
+
+    titleElement.textContent = updatedData.title;
+    descriptionElement.textContent = updatedData.description;
+    dateElement.textContent = updatedData.dueDate;
+
+    if (updatedData.priority === 'low') {
+        todoItem.style.border = '2px solid red';
+    } else if (updatedData.priority === 'medium') {
+        todoItem.style.border = '2px solid orange';
+    } else if (updatedData.priority === 'high') {
+        todoItem.style.border = '2px solid green';
+    }
+
+    const projectKey = document.querySelector('.mainheading div').textContent;
+    const todoId = todoItem.getAttribute('data-id');
+    const todoIndex = tasksByProject[projectKey].tasks.findIndex(item => String(item.id) === todoId);
+    
+    if (todoIndex !== -1) {
+        tasksByProject[projectKey].tasks[todoIndex] = {
+            ...tasksByProject[projectKey].tasks[todoIndex],
+            ...updatedData
+        };
+    }
+}
 export function toDo(e, taskData) {
     
     const { title, description, dueDate, priority } = taskData;
@@ -187,22 +215,9 @@ export function toDo(e, taskData) {
         // Remove the current todo-item from the list
         task(editEvent,existingData);
         
-        titleElement.textContent = existingData.title;
-        descriptionElement.textContent = existingData.description;
-        dateElement.textContent = existingData.dueDate;
-        if (existingData.priority === 'low') {
-            todoItem.style.border = '2px solid red';
-        } else if (existingData.priority === 'medium') {
-            todoItem.style.border = '2px solid orange';
-        } else if (existingData.priority === 'high') {
-            todoItem.style.border = '2px solid green';
-        }
-        
-        const projectData = tasksByProject[projectKey];
-        projectData.value = projectData.value.filter(item => item !== todoItem);
-        
     });
-    console.log(tasksByProject,todoItem)
+
+    
 
 
 }
